@@ -79,7 +79,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
     } catch (error) {
       console.error('Auth URL generation failed:', error)
-      alert(`Authentication failed: ${error.message}`)
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred'
+      alert(`Authentication failed: ${errorMessage}`)
       return null
     }
   }
