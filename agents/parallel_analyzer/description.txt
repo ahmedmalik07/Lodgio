@@ -1,0 +1,1 @@
+This parallel agent runs roommate compatibility analysis, red flag detection, and recommendation generation simultaneously instead of sequentially. This reduces the total processing time from ~15-20 seconds to ~5-7 seconds by executing three independent analysis tasks concurrently.

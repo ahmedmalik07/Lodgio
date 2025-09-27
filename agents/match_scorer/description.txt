@@ -1,0 +1,1 @@
+This agent rates compatibility between students based on sleep schedule, cleanliness, noise tolerance, study habits, and budget alignment using a sophisticated scoring algorithm.

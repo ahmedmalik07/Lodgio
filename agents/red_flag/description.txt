@@ -1,0 +1,1 @@
+This agent detects lifestyle conflicts and potential red flags between roommate candidates that could lead to serious compatibility issues.

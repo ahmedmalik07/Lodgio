@@ -1,0 +1,257 @@
+# ==================================
+# Lodgio - RoomMate Matcher Platform
+# ==================================
+
+# ===============================
+# Environment Variables & Secrets
+# ===============================
+.env
+.env.local
+.env.production
+.env.staging
+*.env
+
+# ===============================
+# Python
+# ===============================
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# ===============================
+# Node.js & Next.js
+# ===============================
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Production build
+.next/
+out/
+build/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# nyc test coverage
+.nyc_output
+
+# ESLint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# ===============================
+# Operating System
+# ===============================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+
+# ===============================
+# IDE & Editors
+# ===============================
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PyCharm
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# ===============================
+# Project Specific
+# ===============================
+# Output directories
+output/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# AI/ML model files
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.pb
+
+# Data files (if they contain sensitive information)
+datasets/private/
+data/private/
+*.csv.bak
+
+# Supabase local development
+supabase/.branches/
+supabase/.temp/
+
+# UV (Python package manager)
+uv.lock.bak
+
+# Test outputs
+test-results/
+playwright-report/
+coverage/
+
+# ===============================
+# Security & Authentication
+# ===============================
+# Private keys
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Service account files
+service-account-*.json
+credentials.json
+
+# ===============================
+# Backup files
+# ===============================
+*.bak
+*.backup
+*.swp
+*.swo
+*~.nib
+
+# ===============================
+# Documentation builds
+# ===============================
+docs/_build/
+docs/site/
+
+# ===============================
+# Local development
+# ===============================
+.local/
+local_config.py
+development.ini

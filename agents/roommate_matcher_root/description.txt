@@ -1,0 +1,1 @@
+This is a roommate matching system that helps Pakistani students find compatible roommates and housing. It sequentially processes roommate profiles, scores compatibility, detects red flags, provides match explanations, and suggests housing options. The system handles mixed Urdu/English text and considers cultural factors relevant to Pakistani students.

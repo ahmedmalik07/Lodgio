@@ -1,0 +1,391 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap');
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  /* Fix for dropdown visibility across the app */
+  select {
+    background-color: white !important;
+    color: #1f2937 !important;
+  }
+
+  select option {
+    background-color: white !important;
+    color: #1f2937 !important;
+  }
+
+  select option:hover {
+    background-color: #f3f4f6 !important;
+  }
+
+  /* Ensure form inputs have proper contrast */
+  input[type='text'],
+  input[type='email'],
+  input[type='number'],
+  input[type='tel'],
+  textarea {
+    background-color: white !important;
+    color: #1f2937 !important;
+  }
+
+  /* Placeholder text styling */
+  input::placeholder,
+  textarea::placeholder {
+    color: #9ca3af !important;
+  }
+}
+
+/* Ensure dropdown options are always visible */
+select {
+  background-color: white !important;
+  color: #1f2937 !important;
+}
+
+select option {
+  background-color: white !important;
+  color: #1f2937 !important;
+  padding: 8px 12px;
+}
+
+select option:hover,
+select option:focus,
+select option:checked {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+/* Fix for webkit browsers */
+select option:disabled {
+  color: #9ca3af !important;
+  background-color: #f9fafb !important;
+}
+
+/* Ensure all input fields have proper styling */
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='tel'],
+textarea {
+  background-color: white !important;
+  color: #1f2937 !important;
+}
+
+input[type='text']:focus,
+input[type='number']:focus,
+input[type='email']:focus,
+input[type='tel']:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
+}
+
+/* Placeholder styling */
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important;
+  opacity: 1;
+}
+
+/* Checkbox styling improvements */
+input[type='checkbox'] {
+  accent-color: #3b82f6;
+}
+
+/* Additional comprehensive visibility fixes */
+.bg-white,
+.bg-white * {
+  color: #1f2937 !important;
+}
+
+/* Ensure all text on white backgrounds is dark */
+*[class*='bg-white'] {
+  color: #1f2937 !important;
+}
+
+*[class*='bg-white'] * {
+  color: #1f2937 !important;
+}
+
+/* Override any potential white text on white backgrounds */
+.text-white[class*='bg-white'],
+*[class*='bg-white'] .text-white {
+  color: #1f2937 !important;
+}
+
+/* Specific fixes for buttons and interactive elements */
+button {
+  color: inherit;
+}
+
+button.bg-white,
+button[class*='bg-white'] {
+  color: #1f2937 !important;
+}
+
+/* Label text visibility */
+label {
+  color: #374151 !important;
+}
+
+/* Paragraph and span visibility */
+p,
+span,
+div {
+  color: inherit;
+}
+
+*[class*='bg-white'] p,
+*[class*='bg-white'] span,
+*[class*='bg-white'] div {
+  color: #1f2937 !important;
+}
+
+/* Heading visibility on white backgrounds */
+*[class*='bg-white'] h1,
+*[class*='bg-white'] h2,
+*[class*='bg-white'] h3,
+*[class*='bg-white'] h4,
+*[class*='bg-white'] h5,
+*[class*='bg-white'] h6 {
+  color: #111827 !important;
+}
+
+/* Chatbot styles */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chatbot-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.chatbot-window {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 350px;
+  height: 500px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chatbot-header {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #f9fafb;
+}
+
+.chatbot-input-area {
+  padding: 16px;
+  border-top: 1px solid #e5e7eb;
+  background: white;
+}
+
+.message {
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.message.user {
+  background: #3b82f6;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+.message.bot {
+  background: white;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+  border-bottom-left-radius: 4px;
+}
+
+.chatbot-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+  background: white !important;
+  color: #1f2937 !important;
+}
+
+.chatbot-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* Mobile responsiveness for chatbot */
+@media (max-width: 640px) {
+  .chatbot-window {
+    width: calc(100vw - 40px);
+    height: 400px;
+    right: 20px;
+    left: 20px;
+  }
+}
+
+/* Final comprehensive visibility fixes */
+/* Force dark text on any white background elements */
+.bg-white,
+.bg-gray-50,
+.bg-gray-100,
+*[class*='bg-white'],
+*[class*='bg-gray-50'],
+*[class*='bg-gray-100'] {
+  color: #111827 !important;
+}
+
+/* Ensure all children inherit proper colors */
+.bg-white
+  *:not(button):not(.text-primary-600):not(.text-primary-700):not(
+    .text-red-500
+  ):not(.text-red-600):not(.text-green-500):not(.text-green-600):not(
+    .text-yellow-500
+  ):not(.text-blue-500),
+*[class*='bg-white']
+  *:not(button):not(.text-primary-600):not(.text-primary-700):not(
+    .text-red-500
+  ):not(.text-red-600):not(.text-green-500):not(.text-green-600):not(
+    .text-yellow-500
+  ):not(.text-blue-500) {
+  color: #111827 !important;
+}
+
+/* Specific overrides for form elements on white backgrounds */
+.bg-white input,
+.bg-white textarea,
+.bg-white select,
+*[class*='bg-white'] input,
+*[class*='bg-white'] textarea,
+*[class*='bg-white'] select {
+  background-color: white !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Override any potential white text classes on white backgrounds */
+.bg-white .text-white,
+*[class*='bg-white'] .text-white {
+  color: #111827 !important;
+}
+
+/* Ensure buttons maintain their intended styling */
+.bg-primary-600,
+.bg-primary-700,
+.bg-secondary-600,
+.bg-blue-600,
+.bg-blue-700,
+.bg-green-500,
+.bg-green-600,
+.bg-red-500,
+.bg-red-600 {
+  color: white !important;
+}
+
+/* Make sure error messages stay red */
+.text-red-500,
+.text-red-600,
+.text-red-700 {
+  color: #dc2626 !important;
+}
+
+/* Make sure success messages stay green */
+.text-green-500,
+.text-green-600,
+.text-green-700 {
+  color: #059669 !important;
+}
+
+/* Ensure primary colors are maintained */
+.text-primary-600,
+.text-primary-700 {
+  color: #2563eb !important;
+}
+
+/* Placeholder visibility on white backgrounds */
+.bg-white input::placeholder,
+.bg-white textarea::placeholder,
+*[class*='bg-white'] input::placeholder,
+*[class*='bg-white'] textarea::placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+/* Agent reasoning box specific fixes */
+.bg-white\/70,
+*[class*='bg-white/70'] {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  color: #111827 !important;
+}
+
+.bg-white\/70 *,
+*[class*='bg-white/70'] * {
+  color: #111827 !important;
+}

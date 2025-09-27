@@ -1,0 +1,1 @@
+This agent provides transparent explanations for roommate matches, highlighting why matches work or don't work, and suggests practical compromises for better compatibility.

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "WEB-4970",
+    "raw_profile_text": "Name: Ahmed Malik. Location: Islamabad, alipur. Budget: 12000-15000 PKR. Sleep: Night owl. Cleanliness: Very organized. Noise: Prefer quiet. Study: Intensive studier. Food: Pakistani/Desi food. Additional: no smoking, no haram kaam.",
+    "city": "Islamabad",
+    "area": "alipur",
+    "budget_PKR": "12000-15000",
+    "role": "seeker",
+    "created_at": "2025-09-27 19:25:10.936016",
+    "search_results": 0
+  },
+  {
+    "id": "WEB-1701",
+    "raw_profile_text": "Name: meow malik. Location: Sargodha, bhera. Budget: 12000-15000 PKR. Sleep: Early bird. Cleanliness: Very organized. Noise: Moderate noise ok. Study: Group study preferred. Food: Flexible. Additional: no haraaaaaaaam kaaam.",
+    "city": "Sargodha",
+    "area": "bhera",
+    "budget_PKR": "12000-15000",
+    "role": "seeker",
+    "created_at": "2025-09-27 19:34:23.120698",
+    "search_results": 0
+  },
+  {
+    "id": "WEB-8473",
+    "raw_profile_text": "Name: Ahmed Malik2. Location: Islamabad, tramri. Budget: 15000-18000 PKR. Sleep: Early bird. Cleanliness: Very organized. Noise: Prefer quiet. Study: Regular study schedule. Food: Fast food. Additional: meow .",
+    "city": "Islamabad",
+    "area": "tramri",
+    "budget_PKR": "15000-18000",
+    "role": "seeker",
+    "created_at": "2025-09-27 20:41:22.706639",
+    "search_results": 0
+  },
+  {
+    "id": "WEB-9362",
+    "raw_profile_text": "Name: ahmed3. Location: Peshawar, alipur. Budget: 12000-18000 PKR. Sleep: Early bird. Cleanliness: Very organized. Noise: Prefer quiet. Study: Intensive studier. Food: Home cooking. Additional: meows i like\n.",
+    "city": "Peshawar",
+    "area": "alipur",
+    "budget_PKR": "12000-18000",
+    "role": "seeker",
+    "created_at": "2025-09-27 20:46:51.156355",
+    "search_results": 0
+  }
+]

@@ -1,0 +1,1 @@
+This agent parses messy, Urdu/English mix roommate ads into structured attributes like budget, cleanliness, study habits, food preferences, sleep schedule, and noise tolerance.
