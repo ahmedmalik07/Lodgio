@@ -88,5 +88,35 @@
     "house_rules": "no harraaam kaam",
     "additional_info": "nothing much",
     "created_at": "2025-09-27 22:26:37.778705"
+  },
+  {
+    "listing_id": "PROP-1759034076317",
+    "city": "Islamabad",
+    "area": "bhera",
+    "monthly_rent_PKR": 20000,
+    "rooms_available": 2,
+    "amenities": "Water Tank, CCTV, Generator, Garden, Terrace, Rooftop",
+    "availability": "Available",
+    "property_type": "Studio",
+    "contact_name": "Ahmed Malik",
+    "contact_number": "+923193608483",
+    "house_rules": "not much flexible",
+    "additional_info": "must be quiet ntured",
+    "created_at": "2025-09-28 09:34:36.899419"
+  },
+  {
+    "listing_id": "PROP-1759034497376",
+    "city": "Islamabad",
+    "area": "comsats university",
+    "monthly_rent_PKR": 25000,
+    "rooms_available": 1,
+    "amenities": "Garden, Water Tank, Security Guard, Air Conditioning, Rooftop",
+    "availability": "Available",
+    "property_type": "Studio",
+    "contact_name": "Ahmed slays",
+    "contact_number": "+923193608483",
+    "house_rules": "No smoking, no nashey and all. ",
+    "additional_info": "be respectful of your neighbors",
+    "created_at": "2025-09-28 09:41:37.952055"
   }
 ]

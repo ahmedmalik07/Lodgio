@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Roommate Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3d72 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        .header h1 { margin: 0; font-size: 2.5em; }
+        .header p { margin: 10px 0 0 0; opacity: 0.9; }
+        .content { padding: 30px; }
+        
+        .search-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #2c5aa0;
+        }
+        .search-section h3 {
+            margin: 0 0 15px 0;
+            color: #2c5aa0;
+            display: flex;
+            align-items: center;
+        }
+        .search-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto auto;
+            gap: 10px;
+            align-items: end;
+        }
+        .search-grid input {
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .search-grid input:focus {
+            outline: none;
+            border-color: #2c5aa0;
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background: #2c5aa0;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #1e3d72;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+        
+        .stats {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 8px;
+            color: #1976d2;
+            font-weight: 600;
+        }
+        
+        .roommates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .roommate-card {
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .roommate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .roommate-card h4 {
+            margin: 0 0 15px 0;
+            color: #2c5aa0;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+        }
+        .detail {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        .detail strong {
+            color: #495057;
+            min-width: 80px;
+            margin-right: 10px;
+        }
+        .contact-info {
+            background: #f0f8ff;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #2c5aa0;
+        }
+        
+        .add-section {
+            background: #fff3cd;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 5px solid #ffc107;
+        }
+        .add-section h3 {
+            margin: 0 0 20px 0;
+            color: #856404;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-grid input, .form-grid textarea {
+            padding: 12px;
+            border: 2px solid #ffeaa7;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form-grid textarea {
+            grid-column: 1 / -1;
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 600;
+        }
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        
+        @media (max-width: 768px) {
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .roommates-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏠 Roommate Finder Pakistan</h1>
+            <p>Find your perfect roommate in Pakistani cities - Works offline!</p>
+        </div>
+        
+        <div class="content">
+            <div class="search-section">
+                <h3>🔍 Search Roommates</h3>
+                <div class="search-grid">
+                    <input type="text" id="cityInput" placeholder="City (Lahore, Karachi, Islamabad...)" />
+                    <input type="text" id="areaInput" placeholder="Area (DHA, Gulberg, F-7...)" />
+                    <input type="text" id="budgetInput" placeholder="Budget (15000-25000)" />
+                    <button class="btn btn-primary" onclick="searchRoommates()">🔍 Search</button>
+                    <button class="btn btn-secondary" onclick="showAll()">📋 Show All</button>
+                </div>
+            </div>
+            
+            <div id="results">
+                <div class="stats">Loading roommate profiles...</div>
+            </div>
+            
+            <div class="add-section">
+                <h3>📝 Add Your Roommate Profile</h3>
+                <div class="form-grid">
+                    <input type="text" id="newName" placeholder="Your full name *" />
+                    <input type="text" id="newCity" placeholder="City *" />
+                    <input type="text" id="newArea" placeholder="Area/Location" />
+                    <input type="text" id="newBudget" placeholder="Budget range (PKR)" />
+                    <input type="text" id="newContact" placeholder="Contact (email/phone) *" />
+                    <textarea id="newPreferences" placeholder="Tell us about your preferences (cleanliness, lifestyle, study habits, etc.)" rows="4"></textarea>
+                </div>
+                <button class="btn btn-primary" onclick="addRoommate()">✅ Add My Profile</button>
+                <div id="addResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Static roommate data for offline functionality
+        let roommateDatabase = [
+            {
+                id: "r001",
+                name: "Ahmed Khan",
+                city: "Lahore", 
+                area: "DHA Phase 5",
+                budget: "15000-25000",
+                preferences: "Clean and organized person, early sleeper (10 PM), no smoking, prefers quiet study environment",
+                contact: "ahmed.dha@email.com | +92-300-1234567",
+                posted: "2025-09-25"
+            },
+            {
+                id: "r002",
+                name: "Fatima Ali", 
+                city: "Karachi",
+                area: "Clifton Block 2",
+                budget: "20000-30000", 
+                preferences: "Social but respectful, cooking allowed, flexible with timings, female roommate preferred",
+                contact: "fatima.clifton@email.com | +92-321-2345678",
+                posted: "2025-09-26"
+            },
+            {
+                id: "r003",
+                name: "Hassan Shah",
+                city: "Islamabad",
+                area: "F-7 Sector", 
+                budget: "12000-20000",
+                preferences: "University student, needs study-friendly environment, budget-conscious, shared utilities",
+                contact: "hassan.f7@email.com | +92-333-3456789", 
+                posted: "2025-09-27"
+            },
+            {
+                id: "r004", 
+                name: "Ayesha Malik",
+                city: "Lahore",
+                area: "Gulberg III",
+                budget: "18000-28000",
+                preferences: "Female only, very neat and organized, working professional, prefers non-smoker",
+                contact: "ayesha.gulberg@email.com | +92-301-4567890",
+                posted: "2025-09-27"
+            },
+            {
+                id: "r005",
+                name: "Ali Raza", 
+                city: "Karachi",
+                area: "North Nazimabad",
+                budget: "10000-18000",
+                preferences: "Budget-friendly option, shared kitchen facilities, friendly and easy-going personality",
+                contact: "ali.nazimabad@email.com | +92-322-5678901",
+                posted: "2025-09-28"
+            },
+            {
+                id: "r006",
+                name: "Zainab Hussain",
+                city: "Islamabad", 
+                area: "G-11 Sector",
+                budget: "14000-22000",
+                preferences: "Female graduate student, quiet study hours, clean cooking habits, looking for like-minded person",
+                contact: "zainab.g11@email.com | +92-335-6789012",
+                posted: "2025-09-28"
+            },
+            {
+                id: "r007",
+                name: "Muhammad Tariq",
+                city: "Islamabad",
+                area: "G-9 Sector", 
+                budget: "16000-24000",
+                preferences: "Working professional, quiet hours after 10 PM, prefers vegetarian meals, non-smoker",
+                contact: "tariq.g9@email.com | +92-340-7890123",
+                posted: "2025-09-28"
+            },
+            {
+                id: "r008",
+                name: "Sana Ahmed",
+                city: "Lahore",
+                area: "Johar Town",
+                budget: "13000-21000",
+                preferences: "Female medical student, needs quiet study space, early riser, health-conscious lifestyle",
+                contact: "sana.johar@email.com | +92-302-8901234",
+                posted: "2025-09-28"
+            },
+            {
+                id: "r009",
+                name: "Omar Malik",
+                city: "Karachi",
+                area: "Gulshan-e-Iqbal",
+                budget: "11000-19000", 
+                preferences: "Engineering student, budget-friendly, shared internet and utilities, cricket enthusiast",
+                contact: "omar.gulshan@email.com | +92-323-9012345",
+                posted: "2025-09-28"
+            },
+            {
+                id: "r010",
+                name: "Mariam Khan",
+                city: "Islamabad",
+                area: "F-10 Sector",
+                budget: "17000-26000",
+                preferences: "Female IT professional, work from home friendly space, tech setup required, organized living",
+                contact: "mariam.f10@email.com | +92-336-0123456", 
+                posted: "2025-09-28"
+            }
+        ];
+        
+        // Load profiles on page load
+        window.onload = function() {
+            showAll();
+        };
+        
+        function showAll() {
+            displayRoommates(roommateDatabase);
+        }
+        
+        function searchRoommates() {
+            const city = document.getElementById('cityInput').value.trim().toLowerCase();
+            const area = document.getElementById('areaInput').value.trim().toLowerCase(); 
+            const budget = document.getElementById('budgetInput').value.trim().toLowerCase();
+            
+            if (!city) {
+                alert('Please enter a city to search');
+                return;
+            }
+            
+            let results = roommateDatabase.filter(roommate => {
+                // City match (required)
+                const cityMatch = roommate.city.toLowerCase().includes(city);
+                
+                // Area match (optional)
+                const areaMatch = !area || roommate.area.toLowerCase().includes(area);
+                
+                // Budget match (optional - simple string contains)
+                const budgetMatch = !budget || roommate.budget.toLowerCase().includes(budget);
+                
+                return cityMatch && areaMatch && budgetMatch;
+            });
+            
+            displayRoommates(results);
+        }
+        
+        function displayRoommates(roommates) {
+            const resultsDiv = document.getElementById('results');
+            
+            if (roommates.length === 0) {
+                resultsDiv.innerHTML = '<div class="no-results">😔 No roommates found matching your criteria.<br>Try different search terms or add your own profile!</div>';
+                return;
+            }
+            
+            let html = `<div class="stats">📊 Found ${roommates.length} roommate profile(s)</div>`;
+            html += '<div class="roommates-grid">';
+            
+            roommates.forEach(roommate => {
+                html += `
+                    <div class="roommate-card">
+                        <h4>👤 ${roommate.name} - ${roommate.city}</h4>
+                        <div class="detail"><strong>📍 Area:</strong> ${roommate.area}</div>
+                        <div class="detail"><strong>💰 Budget:</strong> PKR ${roommate.budget}</div>
+                        <div class="detail"><strong>📅 Posted:</strong> ${roommate.posted}</div>
+                        <div class="detail"><strong>📝 About:</strong> ${roommate.preferences}</div>
+                        <div class="contact-info">
+                            <strong>📞 Contact:</strong><br>
+                            ${roommate.contact}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+        }
+        
+        function addRoommate() {
+            const name = document.getElementById('newName').value.trim();
+            const city = document.getElementById('newCity').value.trim(); 
+            const area = document.getElementById('newArea').value.trim();
+            const budget = document.getElementById('newBudget').value.trim();
+            const contact = document.getElementById('newContact').value.trim();
+            const preferences = document.getElementById('newPreferences').value.trim();
+            
+            if (!name || !city || !contact) {
+                alert('Please fill in all required fields (marked with *)');
+                return;
+            }
+            
+            // Generate new ID
+            const newId = `r${String(roommateDatabase.length + 1).padStart(3, '0')}`;
+            
+            const newRoommate = {
+                id: newId,
+                name: name,
+                city: city,
+                area: area || 'Area not specified',
+                budget: budget || 'Budget negotiable', 
+                contact: contact,
+                preferences: preferences || 'No specific preferences mentioned',
+                posted: new Date().toISOString().split('T')[0]
+            };
+            
+            // Add to database
+            roommateDatabase.push(newRoommate);
+            
+            // Show success message
+            document.getElementById('addResult').innerHTML = 
+                '<div class="message success">✅ Your profile has been added successfully! It will be visible to other users.</div>';
+            
+            // Clear form
+            document.getElementById('newName').value = '';
+            document.getElementById('newCity').value = ''; 
+            document.getElementById('newArea').value = '';
+            document.getElementById('newBudget').value = '';
+            document.getElementById('newContact').value = '';
+            document.getElementById('newPreferences').value = '';
+            
+            // Refresh the display
+            setTimeout(() => {
+                showAll();
+                document.getElementById('addResult').innerHTML = '';
+            }, 3000);
+        }
+        
+        // Add some keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.key === 'f') {
+                event.preventDefault();
+                document.getElementById('cityInput').focus();
+            }
+            if (event.key === 'Enter' && (event.target.id === 'cityInput' || event.target.id === 'areaInput' || event.target.id === 'budgetInput')) {
+                searchRoommates();
+            }
+        });
+    </script>
+</body>
+</html>

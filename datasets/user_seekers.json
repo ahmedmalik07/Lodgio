@@ -38,5 +38,45 @@
     "role": "seeker",
     "created_at": "2025-09-27 20:46:51.156355",
     "search_results": 0
+  },
+  {
+    "id": "WEB-1734",
+    "raw_profile_text": "Name: Ahmed Malik. Location: Islamabad, bhera. Budget: 15000-18000 PKR. Sleep: Night owl. Cleanliness: Very organized. Noise: Prefer quiet. Study: Intensive studier. Food: Home cooking. Additional: not much, flexible.",
+    "city": "Islamabad",
+    "area": "bhera",
+    "budget_PKR": "15000-18000",
+    "role": "seeker",
+    "created_at": "2025-09-28 09:32:39.407461",
+    "search_results": 0
+  },
+  {
+    "id": "WEB-5408",
+    "raw_profile_text": "Name: Salma Saleem . Location: Islamabad, alipur. Budget: 15000-19000 PKR. Sleep: Early bird. Cleanliness: Very organized. Noise: Prefer quiet. Study: Intensive studier. Food: Flexible. Additional: i like to code, play sports and yap.",
+    "city": "Islamabad",
+    "area": "alipur",
+    "budget_PKR": "15000-19000",
+    "role": "seeker",
+    "created_at": "2025-09-28 09:42:25.171748",
+    "search_results": 0
+  },
+  {
+    "id": "WEB-3138",
+    "raw_profile_text": "Name: amy. Location: Islamabad, comsats. Budget: 15000-18000 PKR. Sleep: Night owl. Cleanliness: Relaxed. Noise: Moderate noise ok. Study: Regular study schedule. Food: Fast food. Additional: no nasha.",
+    "city": "Islamabad",
+    "area": "comsats",
+    "budget_PKR": "15000-18000",
+    "role": "seeker",
+    "created_at": "2025-09-28 11:37:24.135075",
+    "search_results": 0
+  },
+  {
+    "id": "WEB-6124",
+    "raw_profile_text": "Name: Ahmed. Location: Islamabad, comsats university. Budget: 15000-17000 PKR. Sleep: Night owl. Cleanliness: Flexible. Noise: Moderate noise ok. Study: Intensive studier. Food: Vegetarian. Additional: no smoking.",
+    "city": "Islamabad",
+    "area": "comsats university",
+    "budget_PKR": "15000-17000",
+    "role": "seeker",
+    "created_at": "2025-09-28 11:53:41.369065",
+    "search_results": 0
   }
 ]
